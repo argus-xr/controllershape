@@ -7,17 +7,25 @@ buttonLocation = [
 [0, 50, 0]
 ];
 
-difference() {
-        import("BaseController.stl", convexity=6);
-    for(i = [0:buttonCount - 1]) {
-        translate(buttonLocation[i]) {
-            Button(hole=true);
+controller();
+
+module controller(includeParts = true) {
+    difference() {
+            import("BaseController.stl", convexity=6);
+        for(i = [0:buttonCount - 1]) {
+            translate(buttonLocation[i]) {
+                Button(hole=true);
+            }
         }
     }
-}
-
-for(i = [0:buttonCount - 1]) {
-    translate(buttonLocation[i]) {
-        Button();
+    
+    if(includeParts) {
+        color("Red") {
+            for(i = [0:buttonCount - 1]) {
+                translate(buttonLocation[i]) {
+                    Button();
+                }
+            }
+        }
     }
 }
