@@ -14,7 +14,7 @@ module Button(radius=4, height=4, key=[2, 2], keylength=1, keyheight=1, clearanc
             }
         }
         for(i=[0:len(key) - 1]) {
-            rotate([0, 0, 360 * i/len(key)]) {
+            rotate([0, 0, 90 - 360 * i/len(key)]) {
                 translate([radius-keylength, 0 - key[i] * 0.5 - _clearance, _cylinderBottom]) {
                     if(key[i] > 0.05) {
                         cube(size=[keylength*2 + _clearance, key[i] + _clearance*2, _keyheight - (hole? travel : 0)]);

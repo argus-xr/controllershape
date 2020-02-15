@@ -1,9 +1,9 @@
 use <BaseController.scad>
 
 splitCubeZOffset = -15;
-splitCubeTranslation = [0, 100, -50 + splitCubeZOffset];
+splitCubeTranslation = [0, -100, -50 + splitCubeZOffset];
 splitCubeSize = [200, 300, 100];
-splitCubeRotation = [-15, 0, 0];
+splitCubeRotation = [15, 0, 0];
 
 controllerBottom(layFlat=true);
 controllerTop(layFlat=true);
@@ -13,6 +13,7 @@ module controllerTop(layFlat = false) {
         rotate(layFlat? -splitCubeRotation : [0, 0, 0]) {
             difference() {
                 controller(includeParts = false);
+                controllerTopCutout();
                 splitCube();
             }
         }
